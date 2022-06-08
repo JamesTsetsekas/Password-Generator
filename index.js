@@ -6,7 +6,6 @@ const passwordEls = document.querySelectorAll('.password')
 const popUp = document.getElementById('pop-up')
 let timeoutId
 let passwordLength = lengthInput.value
-console.log(passwordLength)
 
 decrementBtn.addEventListener('click', () => minusNum())
 incrementBtn.addEventListener('click', () => addNum())
@@ -21,22 +20,31 @@ passwordEls.forEach(element => {
 
 function minusNum() {
     passwordLength--;
+    if (passwordLength >= 8 && passwordLength <= 20) {
     lengthInput.value = passwordLength
+    } else {
+        alert("Password length must be between 8 and 20 characters.")
+    }
+    
 }
 
 function addNum() {
     passwordLength++;
+    if (passwordLength >= 8 && passwordLength <= 20) {
     lengthInput.value = passwordLength
+    } else {
+        alert("Password length must be between 8 and 20 characters.")
+    }
+    
 }
 
 function updateLength(number) {
   if (number >= 8 && number <= 20) {
     passwordLength = number
+    lengthInput.value = passwordLength
   } else {
     alert("Password length must be between 8 and 20 characters.")
   }
-  
-  lengthInput.value = passwordLength
 }
 
 function generatePassword() {
