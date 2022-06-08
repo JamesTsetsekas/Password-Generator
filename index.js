@@ -6,9 +6,10 @@ const passwordEls = document.querySelectorAll('.password')
 const popUp = document.getElementById('pop-up')
 let timeoutId
 let passwordLength = lengthInput.value
+console.log(passwordLength)
 
-decrementBtn.addEventListener('click', () => updateLength(passwordLength - 1))
-incrementBtn.addEventListener('click', () => updateLength(passwordLength + 1))
+decrementBtn.addEventListener('click', () => minusNum())
+incrementBtn.addEventListener('click', () => addNum())
 lengthInput.addEventListener('blur', () => updateLength(lengthInput.value))
 
 generateBtn.addEventListener('click', generatePasswords)
@@ -17,6 +18,16 @@ passwordEls.forEach(element => {
   element.addEventListener('click', copyToClipboard)
 })
 
+
+function minusNum() {
+    passwordLength--;
+    lengthInput.value = passwordLength
+}
+
+function addNum() {
+    passwordLength++;
+    lengthInput.value = passwordLength
+}
 
 function updateLength(number) {
   if (number >= 8 && number <= 20) {
@@ -90,4 +101,3 @@ function copyUsingExecCommand(text) {
     document.execCommand("copy")
     input.remove()
 }
-
